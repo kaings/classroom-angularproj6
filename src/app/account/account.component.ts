@@ -9,6 +9,7 @@ export class AccountComponent implements OnInit {
   @Input() account: {name: string, status: string};
   @Input() accountId: number;
   @Output() statusChange = new EventEmitter<{id: number, status: string}>();
+  @Output() removeElement = new EventEmitter<number>();
 
   constructor() { }
 
@@ -20,4 +21,7 @@ export class AccountComponent implements OnInit {
     this.statusChange.emit({id: this.accountId, status: status});
   }
 
+  onRemoveElement() {
+    this.removeElement.emit(this.accountId);
+  }
 }

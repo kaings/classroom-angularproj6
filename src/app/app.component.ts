@@ -21,4 +21,7 @@ export class AppComponent {
     this.accounts.push(newAccountInfo);
   }
 
+  onAccountRemove(accountId: number) {
+    this.accounts.splice(accountId,1);
+  }
 }

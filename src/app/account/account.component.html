@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-xs-12 col-md-8 col-md-offset-2">
     <h4>{{ account.name }}</h4>
-    <p>This account is {{ account.status }}</p>
+    <p>This account is {{ account.status }}
+      <span style="float: right; cursor: pointer; color: darkred" (click)="onRemoveElement()">x</span>
+    </p>
     <button class="btn btn-default" (click)="onSetTo('active')">Set to 'active'</button>
     <button class="btn btn-default" (click)="onSetTo('inactive')">Set to 'inactive'</button>
     <button class="btn btn-default" (click)="onSetTo('unknown')">Set to 'unknown'</button>
