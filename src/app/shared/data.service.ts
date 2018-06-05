@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 import { Account } from './account.model';
 import { LoggingService } from './logging.service';
@@ -11,6 +11,8 @@ export class DataService {
   ];
 
   constructor(private loggingService: LoggingService) {}
+
+  statusUpdateAlert = new EventEmitter<{id: number, status: string}>();
 
   statusUpdate(updateInfo: {id: number, status: string}) {
     this.accounts[updateInfo.id].status = updateInfo.status;
