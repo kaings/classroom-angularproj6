@@ -23,7 +23,7 @@ export class AccountComponent implements OnInit {
   onSetTo(status: string) {
     // console.log(this.accountId, status);
     // this.statusChange.emit({id: this.accountId, status: status});
-    this.loggingService.loggingStatus(this.accountId, status);
+    // this.loggingService.loggingStatus(this.accountId, status);
     this.dataService.statusUpdate({id: this.accountId, status: status});
   }
 

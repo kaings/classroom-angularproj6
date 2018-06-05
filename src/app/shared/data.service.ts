@@ -1,13 +1,20 @@
-import { Account } from './account.model';
+import { Injectable } from '@angular/core';
 
+import { Account } from './account.model';
+import { LoggingService } from './logging.service';
+
+@Injectable()
 export class DataService {
   accounts: Account[] = [
     new Account('Test Account 1', 'Active'),
     new Account('Test Account 2', 'Hidden')
   ];
 
+  constructor(private loggingService: LoggingService) {}
+
   statusUpdate(updateInfo: {id: number, status: string}) {
     this.accounts[updateInfo.id].status = updateInfo.status;
+    this.loggingService.loggingStatus(updateInfo.id, updateInfo.status);
   }
 
   accountAdded(newAccountInfo: {name: string, status: string}) {
