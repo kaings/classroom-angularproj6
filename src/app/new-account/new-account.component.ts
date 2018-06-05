@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {DataService} from '../shared/data.service';
 
 @Component({
   selector: 'app-new-account',
@@ -6,14 +7,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./new-account.component.css']
 })
 export class NewAccountComponent implements OnInit {
-  @Output() createAccount = new EventEmitter<{ name: string, status: string }>();
+  // @Output() createAccount = new EventEmitter<{ name: string, status: string }>();
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }
 
   onCreateAccount(accountName: string, accountStatus: string) {
-    this.createAccount.emit({ name: accountName, status: accountStatus });
+    // this.createAccount.emit({ name: accountName, status: accountStatus });
+    this.dataService.accountAdded({name: accountName, status: accountStatus});
   }
 }
