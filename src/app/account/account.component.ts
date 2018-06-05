@@ -1,9 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { LoggingService } from '../shared/logging.service';
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  styleUrls: ['./account.component.css'],
+  providers: [LoggingService]
 })
 export class AccountComponent implements OnInit {
   @Input() account: {name: string, status: string};
@@ -11,7 +14,7 @@ export class AccountComponent implements OnInit {
   @Output() statusChange = new EventEmitter<{id: number, status: string}>();
   @Output() removeElement = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private loggingService: LoggingService) { }
 
   ngOnInit() {
   }
@@ -19,6 +22,7 @@ export class AccountComponent implements OnInit {
   onSetTo(status: string) {
     // console.log(this.accountId, status);
     this.statusChange.emit({id: this.accountId, status: status});
+    this.loggingService.loggingStatus(this.accountId, status);
   }
 
   onRemoveElement() {

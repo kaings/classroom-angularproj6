@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-md-8 col-md-offset-2">
     <h4>{{ account.name }}</h4>
     <p>This account is {{ account.status }}
-      <span style="float: right; cursor: pointer; color: darkred" (click)="onRemoveElement()">x</span>
+      <span style="float: right; cursor: pointer; color: #c50b0b; background-color: #f08080; padding: 0px 5px" (click)="onRemoveElement()">x</span>
     </p>
     <button class="btn btn-default" (click)="onSetTo('active')">Set to 'active'</button>
     <button class="btn btn-default" (click)="onSetTo('inactive')">Set to 'inactive'</button>
